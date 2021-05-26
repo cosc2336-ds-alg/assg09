@@ -1,4 +1,4 @@
-/** @file assg-tests-stack-functions.cpp
+/** @file test-stack-functions.cpp
  * @brief Stack function declarations for assignment
  *
  * @author Derek Harter
@@ -12,13 +12,12 @@
  *   file has catch2 unit tests you need to test and implement the
  *   functions for your assignment.
  */
-#include "catch.hpp"
-#include "Stack.hpp"
 #include "AStack.hpp"
 #include "LStack.hpp"
+#include "Stack.hpp"
+#include "catch.hpp"
 #include "stack-functions.hpp"
 using namespace std;
-
 
 /** Task 2: test doParenthesisMatch() functions.  This is the first function
  * you are to implement for this assignment.
@@ -50,7 +49,6 @@ using namespace std;
    }
  */
 
-
 /** Task 3: test decodeIDSequence() functions.
  */
 /*
@@ -80,7 +78,6 @@ using namespace std;
    CHECK(decodeIDSequence("IDIDDIDIIIIDDDDIDDIII") == "13265487910111615141312191817202122");
    }
  */
-
 
 /** Task 4: test insertItemOnSortedStack() functions.
  */
@@ -199,7 +196,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 5: test sortStack() functions.
  */

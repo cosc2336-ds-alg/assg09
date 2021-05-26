@@ -16,10 +16,9 @@
  *   Stack instances for your functions.  It is incorrect to include
  *   STL stacks or other containers here to use for this assignment.
  */
-#include "Stack.hpp"  // only use the Stack ADT given, do not use STL stacks
 #include "AStack.hpp"
 #include "LStack.hpp"
-
+#include "Stack.hpp" // only use the Stack ADT given, do not use STL stacks
 
 /**
  * @brief Cause specific instance compilations
@@ -33,9 +32,9 @@
  * https://isocpp.org/wiki/faq/templates#separate-template-class-defn-from-decl
  */
 // uncomment the following when working on task 4 to implement the insertItemOnSortedStack() template function
-//template void insertItemOnSortedStack<int>(int item, Stack<int>& sortedStack);
-//template void insertItemOnSortedStack<string>(string item, Stack<string>& sortedStack);
+// template void insertItemOnSortedStack<int>(int item, Stack<int>& sortedStack);
+// template void insertItemOnSortedStack<string>(string item, Stack<string>& sortedStack);
 
 // uncomment the following when working on task 5 to implement the sortStack() template function
-//template void sortStack<int>(Stack<int>& aStack);
-//template void sortStack<string>(Stack<string>& aStack);
+// template void sortStack<int>(Stack<int>& aStack);
+// template void sortStack<string>(Stack<string>& aStack);

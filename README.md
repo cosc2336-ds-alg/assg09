@@ -4,6 +4,7 @@ author: 'COSC 2336: Data Structures and Algorithms'
 date: 'Summer 2021'
 ---
 
+\newcommand{\BigO}[1]{$\mathcal{O}(#1)$}
 
 # Objectives
 - Implement Stack API functions.
@@ -48,13 +49,13 @@ array to insert new values on the stack for the `push()`
 and `pop()` operations.  If we did that, we would have to always shift
 items up and down whenever we pushed and popped items to/from
 the stack, meaning both operations would be
-$\mathcal{O}(n)$.  Instead we should be using the end of the array
+\BigO{n}.  Instead we should be using the end of the array
 to push on items and pop them off from the stack.  As long as
 we haven't filled up the capacity of our array memory, the
-operations are then constant time $\mathcal{O}(1)$ operations, as
+operations are then constant time \BigO{1} operations, as
 long as we don't have to grow the size of the static array.  In which
 case, when that happens, the push operation does become 
-$\mathcal{O}(n)$ since we have to copy all values from the old
+\BigO{n} since we have to copy all values from the old
 memory to the new memory.  However, the pop operation would always
 be constant time if we are pushing and popping from the end of the array.
 
@@ -67,10 +68,10 @@ end of the linked list.  This is because, if you want to remove
 the last node of a singly linked list, you need a pointer to the
 node before the last one so you can make it the new `back` node
 after removal.  This requires a search through the list, and thus
-`pop()` becomes $\mathcal{O}(n)$ if we use the back of the list.
+`pop()` becomes \BigO{n} if we use the back of the list.
 So for a linked list, we want to push and pop from the front of
 the list, because both operations can be done in 
-$\mathcal{O}(1)$ constant time in that case.
+\BigO{1} constant time in that case.
 
 
 # Overview and Setup
@@ -80,9 +81,9 @@ using and adding code to for this assignment.
 
 | File Name                                    | Description                                                                                                 |
 |----------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `src/assg-tests-stack-functions.cpp`         | Unit tests of the functions using `Stack` data structures you will write for this assignment.               |
-| `src/assg-tests-AStack.cpp`                  | Unit tests of the array based `AStack` implementation of the `Stack` API                                    |
-| `src/assg-tests-LStack.cpp`                  | Unit tests of the link list based `LStack` implementation of the `Stack` API                                |
+| `src/test-stack-functions.cpp`               | Unit tests of the functions using `Stack` data structures you will write for this assignment.               |
+| `src/test-AStack.cpp`                        | Unit tests of the array based `AStack` implementation of the `Stack` API                                    |
+| `src/test-LStack.cpp`                        | Unit tests of the link list based `LStack` implementation of the `Stack` API                                |
 | `include/stack-functions.hpp`                | Header file for the functions you will write that use stack for various applications.                       |
 | `include/Stack.hpp`                          | Header file of the ADT base `Stack` class that defines the `Stack` interface / abstraction                  |
 | `include/AStack.hpp`                         | Header file of the concrete array based implementation of the `Stack` abstract data type                    |
@@ -113,17 +114,15 @@ you have completed the following setup steps.
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
    development environment.
-3. Checkout the 'origins/feedback' branch to your local working DevBox
-   repository.
-4. Configure the project by running the `configure` script from a terminal.
-5. Confirm that the project builds and runs, though no tests will be
+3. Configure the project by running the `configure` script from a terminal.
+4. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
-6. You should create the issue for Task 1 and/or for all tasks for the assignment
+5. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
-   and create it/them from the issue templates for the assignment.  Also you
-   should close the initial Pull request that should be automatically
-   opened for you, so that you can open your own when committing your work.
+   and create it/them from the issue templates for the assignment. Also make
+   sure that you link each issue you create with the `Feedback` pull
+   request on your GitHub classroom.
 
 
 # Assignment Tasks
@@ -131,14 +130,14 @@ you have completed the following setup steps.
 ## Task 1: Implement `LStack` missing `push()` and `pop()` Methods
 
 As usual make sure that you create Task 1 issue on GitHub and 
-are ready to create your Pull request for this assignment before beginning.
+have linked the issue to the `Feedback` pull request.
 
 Also as usual, you should be practicing incremental development. Add the
 function prototypes for `push()` and `pop()` to the `LStack.hpp`
 header file, and add in stub implementations that do nothing
 (these are both void functions) in the `LStack.cpp` implementation file.
 You should be able to uncomment the first set of test cases in the
-`assg-tests-LStack.cpp` file and compile the project and run the tests
+`test-LStack.cpp` file and compile the project and run the tests
 before beginning to implement push and pop.
 
 The `push()` function as we mentioned above is doing the same as the
@@ -190,15 +189,15 @@ calls in the array and copy constructor to `push()` so that your
 stack constructors will work.
 
 Once you are satisfied with your work, and you are passing all of the
-tests now in the `assg-tests-LStack.cpp` and `assg-tests-AStack.cpp`
-test files, commit your changes and push them to the `feedback` 
-branch of your GitHub repository.
+tests now in the `test-LStack.cpp` and `test-AStack.cpp`
+test files, commit your changes and push them to the `Feedback` 
+pull request of your GitHub repository.
 
 ## Task 2: Implement `doParenthesisMatch()` Function
 
 Perform the usual steps before starting task 2, and make sure that you
 have created Issue 2 in GitHub to work on this task.  The first
-test case in the `assg-tests-stack-functions.cpp` file has the
+test case in the `test-stack-functions.cpp` file has a
 set of tests for this task 2 `doParenthsisMatch()` function.
 
 In the second task, we will write a function that will check if a
@@ -247,8 +246,8 @@ for (size_t index = 0; index < s.length(); index++)
 ```
 
 Once you are satisfied with your function and you are passing
-the tests in `assg-tests-stack-functions.cpp`, commit your work
-and push it to the `feedback` branch of your GitHub
+the tests in `test-stack-functions.cpp`, commit your work
+and push it to the `Feedback` pull request of your GitHub
 repository.
 	
 ## Task 3: Implement `decodeIDSequence()` Function
@@ -309,7 +308,7 @@ string like `string result = ""` and append the digits to the end when you
 pop them from the stack as described.
 
 When you have the function working and are satisfied, commit your changes
-and push them to the `feedback` branch of your repository for this
+and push them to the `Feedback` pull request of your repository for this
 assignment.
 
 
@@ -423,9 +422,9 @@ definitions here.  These will cause the compiler to include versions
 of your template function to work on integer and string stacks, so
 that everything will link correctly.
 
-Once your work passes the tests in `assg-tests-stack-functions.cpp`
+Once your work passes the tests in `test-stack-functions.cpp`
 for the `insertItemOnSortedStack()` function, commit your work and
-push it the `feedback` branch of your repository.
+push it the `Feedback` pull request of your repository.
 
 ## Task 5: Implement `sortStack()` Template Function
 
@@ -475,7 +474,7 @@ at the bottom of the `stack-functions.cpp` file so that your
 `sortStack()` will compile and link correctly.
 
 Once you are satisfied with your work, commit it and push it to the
-`feedback` branch of your repository.
+`Feedback` pull request of your repository.
 
 
 # Assignment Submission

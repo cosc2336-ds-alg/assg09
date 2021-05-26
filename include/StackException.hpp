@@ -15,7 +15,6 @@
 #include <string>
 using namespace std;
 
-
 /** @class StackEmptyException
  * @brief Stack Empty Exception for the Stack class.
  *
@@ -34,7 +33,6 @@ private:
   /// Stores the particular message describing what caused the exception.
   string message;
 };
-
 
 /** @class StackMemoryBoundsException
  * @brief Memory Bounds Exception for the Stack class.
@@ -56,6 +54,5 @@ private:
   /// Stores the particular message describing what caused the exception.
   string message;
 };
-
 
 #endif // _STACK_EXCEPTION_HPP_

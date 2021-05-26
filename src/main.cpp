@@ -1,4 +1,4 @@
-/** @file assg-main.cpp
+/** @file main.cpp
  * @brief main/debug executable for Assignment Overloading and Templates
  *   Overloading operators for List class and templatizing the class.
  *
@@ -13,12 +13,13 @@
  * This file is a stub for a main() function so that we can build a
  * version suitable for running in the debugger.
  */
-#include <iostream>
 #include "Stack.hpp"
+#include <iostream>
 using namespace std;
 
-
-/** main entry point
+/**
+ * @brief Main entry point
+ *
  * Main entry point for debugging functions.
  *
  * @param argc The command line argument count, the number of arguments

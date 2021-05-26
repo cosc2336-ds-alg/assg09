@@ -18,7 +18,6 @@
 #include <iostream>
 using namespace std;
 
-
 /** @class Stack
  * @brief The Stack data type abstraction
  *
@@ -27,14 +26,9 @@ using namespace std;
  * perform with stacks, such as push and pop the top item on the
  * stack and retrieve the top value of the stack.
  */
-template <class T>
+template<class T>
 class Stack
 {
-protected:
-  /// @brief the current size of the stack of values, this is
-  ///   protected so derived classes can access it
-  int size;
-
 public:
   // accessor and information methods
   int getSize() const;
@@ -46,12 +40,17 @@ public:
 
   // adding, accessing and removing values from the stack
   virtual void clear() = 0;
-  //virtual void push(const T& newItem) = 0;
-  //virtual void pop() = 0;
+  // virtual void push(const T& newItem) = 0;
+  // virtual void pop() = 0;
 
   // friend functions and friend operators
-  template <typename U>
+  template<typename U>
   friend ostream& operator<<(ostream& out, const Stack<U>& rhs);
+
+protected: // private for this class and children
+  /// @brief the current size of the stack of values, this is
+  ///   protected so derived classes can access it
+  int size;
 };
 
 #endif // _STACK_HPP_

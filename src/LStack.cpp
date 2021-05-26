@@ -17,19 +17,20 @@
  * and pop off of the stack since both operations are naturally
  * constant time O(1) to implement with a linked stack.
  */
+#include "LStack.hpp"
+#include "StackException.hpp"
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "LStack.hpp"
-#include "StackException.hpp"
 using namespace std;
 
-
-/** default constructor
+/**
+ * @brief Default constructor
+ *
  * Construct an empty stack.  The empty stack will have no allocated memory
  * nor any values.
  */
-template <class T>
+template<class T>
 LStack<T>::LStack()
 {
   // Empty stack has size 0 and top is null
@@ -37,8 +38,9 @@ LStack<T>::LStack()
   topNode = nullptr;
 }
 
-
-/** standard constructor
+/**
+ * @brief Standard constructor
+ *
  * Construct a stack of values from a (statically) defined and
  * provided array of values.  We need to dynamically construct
  * a node for each value in the array and create a linked stack of these
@@ -49,7 +51,7 @@ LStack<T>::LStack()
  * @param values The (static) array of values to use to construct
  *   this new Stack of values with.
  */
-template <class T>
+template<class T>
 LStack<T>::LStack(int size, T values[])
 {
   // Make sure stack is empty before copying values from array.
@@ -64,12 +66,13 @@ LStack<T>::LStack(int size, T values[])
   // in correct order
   for (int index = size - 1; index >= 0; index--)
   {
-    //push(values[index]);
+    // push(values[index]);
   }
 }
 
-
-/** copy constructor
+/**
+ * @brief Copy constructor
+ *
  * Provide a copy constructor for the Stack class.  A copy constructor
  * will be invoked whenver you assign one instance of a Stack to another.
  * For example
@@ -81,7 +84,7 @@ LStack<T>::LStack(int size, T values[])
  * @param stack The other Stack type we are to make a copy of in this
  *   constructor.
  */
-template <class T>
+template<class T>
 LStack<T>::LStack(const LStack<T>& stack)
 {
   // Make sure stack is empty before copying values from other stack.
@@ -95,18 +98,19 @@ LStack<T>::LStack(const LStack<T>& stack)
   // correct order onto this stack.
   for (int index = stack.getSize() - 1; index >= 0; index--)
   {
-    //push(stack[index]);
+    // push(stack[index]);
   }
 }
 
-
-/** destructor
+/**
+ * @brief Class destructor
+ *
  * Destructor for the Stack class.  A concrete Stack implementation must
  * provide a clear() method to clear all items and safely deallocate any
  * memory that the concrete instance is using.  Invoke the clear
  * of the concrete subclass to perform the destruction.
  */
-template <class T>
+template<class T>
 LStack<T>::~LStack()
 {
   // call clear to do actual work to deallocate any allocation
@@ -114,8 +118,9 @@ LStack<T>::~LStack()
   clear();
 }
 
-
-/** access top of stack
+/**
+ * @brief Access top of stack
+ *
  * Accessor method to get a copy of the item currently
  * at the top of this stack..
  *
@@ -126,7 +131,7 @@ LStack<T>::~LStack()
  *   access top item of an empty list, this exception
  *   is generated and thrown instead.
  */
-template <class T>
+template<class T>
 T LStack<T>::top() const
 {
   // make sure stack is not empty before we try and access
@@ -144,22 +149,22 @@ T LStack<T>::top() const
   return topNode->value;
 }
 
-
-/** Stack to string
+/**
+ * @brief Stack to string
+ *
  * Accessor method to construct and return a string representation
  * of the current values and status of this Stack instance.
  *
  * @returns string Returns the string constructed with the information
  *   about this Stack.
  */
-template <class T>
+template<class T>
 string LStack<T>::str() const
 {
   ostringstream out;
 
   // stream stack information into the output stream
-  out << "<stack> size: " << this->size
-      << " top:[ ";
+  out << "<stack> size: " << this->size << " top:[ ";
 
   // stream the current values of the stack to the output stream
   Node<T>* current = topNode;
@@ -188,8 +193,9 @@ string LStack<T>::str() const
   return out.str();
 }
 
-
-/** boolean equals operator
+/**
+ * @brief Boolean equals operator
+ *
  * Check if this Stack is equal to the right hand side (rhs)
  * stack.  The stacks are equal if their sizes are equal, and if
  * all elements in both stacks are equal.
@@ -199,7 +205,7 @@ string LStack<T>::str() const
  *
  * @returns bool true if the stacks are equal, false if the are not.
  */
-template <class T>
+template<class T>
 bool LStack<T>::operator==(const Stack<T>& rhs) const
 {
   // first the stacks have to be of the same size, or else they
@@ -225,8 +231,9 @@ bool LStack<T>::operator==(const Stack<T>& rhs) const
   return true;
 }
 
-
-/** indexing operator
+/**
+ * @brief Indexing operator
+ *
  * Provide a way to index individual values in our private
  * linked stack of values.  This allows code to, for the
  * most part, treated an instance of our Stack as if it were
@@ -242,16 +249,15 @@ bool LStack<T>::operator==(const Stack<T>& rhs) const
  * @throws StackMemoryBoundsException if a request for an index beyond
  *   the end of the array (or less than 0) is made.
  */
-template <class T>
+template<class T>
 T& LStack<T>::operator[](int index) const
 {
   // first check that the requsted index is legally
   // within the bounds of the current size of our stack
-  if ( (index < 0) or (index >= this->size)  )
+  if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <LStack::operator[]> illegal bounds access, stack size: " << this->size
-        << " tried to access index address: " << index;
+    out << "Error: <LStack::operator[]> illegal bounds access, stack size: " << this->size << " tried to access index address: " << index;
 
     throw StackMemoryBoundsException(out.str());
   }
@@ -271,12 +277,13 @@ T& LStack<T>::operator[](int index) const
   return current->value;
 }
 
-
-/** clear out stack
+/**
+ * @brief Clear out stack
+ *
  * Clear or empty out the stack.  Return the stack back
  * to an empty stack.
  */
-template <class T>
+template<class T>
 void LStack<T>::clear()
 {
   // if the stack is not empty, we need to deallocate and return the nodes
@@ -302,7 +309,6 @@ void LStack<T>::clear()
   this->size = 0;
   topNode = nullptr;
 }
-
 
 /**
  * @brief Cause specific instance compilations

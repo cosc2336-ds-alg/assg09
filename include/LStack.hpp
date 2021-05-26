@@ -19,11 +19,10 @@
  */
 #ifndef _LSTACK_HPP_
 #define _LSTACK_HPP_
-#include <string>
-#include "Stack.hpp"
 #include "Node.hpp"
+#include "Stack.hpp"
+#include <string>
 using namespace std;
-
 
 /** @class LStack
  * @brief The LStack concrete linked list implemention of the
@@ -32,14 +31,9 @@ using namespace std;
  * Concrete implementation of Stack abstraction using a dynamic
  * link listed of nodes.
  */
-template <class T>
+template<class T>
 class LStack : public Stack<T>
 {
-private:
-  /// @brief pointer to the top (or front) of the linked list of
-  ///   nodes that we manage for the stack.
-  Node<T>* topNode;
-
 public:
   // constructors and destructors
   LStack();                            // default constructor
@@ -55,7 +49,11 @@ public:
 
   // adding, accessing and removing values from the stack
   void clear();
-};
 
+private:
+  /// @brief pointer to the top (or front) of the linked list of
+  ///   nodes that we manage for the stack.
+  Node<T>* topNode;
+};
 
 #endif // define _LSTACK_HPP_

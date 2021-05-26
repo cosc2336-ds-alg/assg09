@@ -16,10 +16,9 @@
  */
 #ifndef _ASTACK_HPP_
 #define _ASTACK_HPP_
-#include <string>
 #include "Stack.hpp"
+#include <string>
 using namespace std;
-
 
 /** @class AStack
  * @brief The AStack concrete array based implemention of the
@@ -28,27 +27,9 @@ using namespace std;
  * Concrete implementation of Stack abstraction using an array based
  * implementation.
  */
-template <class T>
+template<class T>
 class AStack : public Stack<T>
 {
-private:
-  /// @brief private constant, initial allocation size for empty stacks
-  ///   to grow to
-  const int INITIAL_ALLOCATION_SIZE = 10;
-
-  /// @brief the current amount of allocated memory being
-  ///   managed by/for this stack of values
-  int allocationSize;
-
-  /// @brief For the array based implementation, the values is a fixed
-  ///   array of type T values.  The values contained in the stack
-  ///   will be manged from the array, and a new array allocated and
-  ///   values copied if we fill up the current allocation.
-  T* values;
-
-  // private member methods for managing the Stack internally
-  void growStackIfNeeded();
-
 public:
   // constructors and destructors
   AStack();                            // default constructor
@@ -67,7 +48,24 @@ public:
   void clear();
   void push(const T& newItem);
   void pop();
-};
 
+private:
+  /// @brief private constant, initial allocation size for empty stacks
+  ///   to grow to
+  const int INITIAL_ALLOCATION_SIZE = 10;
+
+  /// @brief the current amount of allocated memory being
+  ///   managed by/for this stack of values
+  int allocationSize;
+
+  /// @brief For the array based implementation, the values is a fixed
+  ///   array of type T values.  The values contained in the stack
+  ///   will be manged from the array, and a new array allocated and
+  ///   values copied if we fill up the current allocation.
+  T* values;
+
+  // private member methods for managing the Stack internally
+  void growStackIfNeeded();
+};
 
 #endif // define _ASTACK_HPP_

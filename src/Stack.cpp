@@ -12,31 +12,33 @@
  * Implementation of Stack base class concrete member functions
  * and friend functions.
  */
-#include <iostream>
 #include "Stack.hpp"
+#include <iostream>
 using namespace std;
 
-
-/** size accessor
+/**
+ * @brief Size accessor
+ *
  * Accessor method to get the current size of this Stack of values.
  *
  * @returns int Returns the current size of the stack of values.
  */
-template <class T>
+template<class T>
 int Stack<T>::getSize() const
 {
   return size;
 }
 
-
-/** check if empty stack
+/**
+ * @brief Check if empty stack
+ *
  * Accessor method to test if the Stack is currently
  * empty or not.
  *
  * @returns bool Returns true if the Stack is currently
  *   empty, or false if it has 1 or more items.
  */
-template <class T>
+template<class T>
 bool Stack<T>::isEmpty() const
 {
   // can simply test size, if it is equal to 0, then it is true the
@@ -44,9 +46,8 @@ bool Stack<T>::isEmpty() const
   return size == 0;
 }
 
-
-/** Stack output operator
- *@brief overload output stream operator for Stack type.
+/**
+ * @brief Overload output stream operator for Stack type.
  *
  * Overload the output stream operator so that we can display current
  * values of a Stack on standard output.  We can define this in the
@@ -63,7 +64,7 @@ bool Stack<T>::isEmpty() const
  *   output stream, but after we  have inserted current Stack
  *   values / representation onto the stream
  */
-template <typename U>
+template<typename U>
 ostream& operator<<(ostream& out, const Stack<U>& rhs)
 {
   // reuse Stack str() method to stream to output stream
@@ -72,7 +73,6 @@ ostream& operator<<(ostream& out, const Stack<U>& rhs)
   // return the modified output stream as our result
   return out;
 }
-
 
 /**
  * @brief Cause specific instance compilations
@@ -85,9 +85,8 @@ ostream& operator<<(ostream& out, const Stack<U>& rhs)
  * https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
  * https://isocpp.org/wiki/faq/templates#separate-template-class-defn-from-decl
  */
-template ostream & operator<< <int>(ostream&, const Stack<int>&);
-template ostream & operator<< <string>(ostream&, const Stack<string>&);
-
+template ostream& operator<<<int>(ostream&, const Stack<int>&);
+template ostream& operator<<<string>(ostream&, const Stack<string>&);
 
 /**
  * @brief Cause specific instance compilations

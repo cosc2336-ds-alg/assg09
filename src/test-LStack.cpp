@@ -1,4 +1,4 @@
-/** @file assg-tests-LStack.cpp
+/** @file test-LStack.cpp
  * @brief Unit tests for Assignment Overloading and Templates
  *
  * @author Derek Harter
@@ -9,12 +9,11 @@
  *
  * Tests of the linked list based implementation of the Stack API.
  */
-#include <iostream>
-#include "catch.hpp"
 #include "LStack.hpp"
 #include "StackException.hpp"
+#include "catch.hpp"
+#include <iostream>
 using namespace std;
-
 
 /** Task 1: Test LStack<int> concrete array implementation of stack of integers
  */
@@ -215,7 +214,6 @@ using namespace std;
    }
  */
 
-
 /** Task 1: Test LStack<string> concrete array implementation of stack of strings
  */
 /*
@@ -316,13 +314,15 @@ using namespace std;
     }
     CHECK( stack.getSize() == 10 );
     CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 10 top:[ string-1000, string-729, string-512, string-343, string-216, string-125, string-64, string-27, string-8, string-1 ]:bottom" );
+    CHECK( stack.str() == "<stack> size: 10 top:[ string-1000, string-729, string-512, string-343, string-216, string-125, string-64,
+   string-27, string-8, string-1 ]:bottom" );
 
     // Array based stack should double in size, only for LStack tests
     stack.push( "string-" + to_string( int(pow(11, 3)) ) );
     CHECK( stack.getSize() == 11 );
     CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125, string-64, string-27, string-8, string-1 ]:bottom" );
+    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125,
+   string-64, string-27, string-8, string-1 ]:bottom" );
    }
 
    SECTION("test clear of stack")
@@ -335,7 +335,8 @@ using namespace std;
     }
     CHECK( stack.getSize() == 11 );
     CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125, string-64, string-27, string-8, string-1 ]:bottom" );
+    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125,
+   string-64, string-27, string-8, string-1 ]:bottom" );
 
     // clear the stack
     stack.clear();

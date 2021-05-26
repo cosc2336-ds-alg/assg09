@@ -10,10 +10,9 @@
  * Implementall exception methods that can be generated and thrown by Stack
  * instances.
  */
-#include <string>
 #include "StackException.hpp"
+#include <string>
 using namespace std;
-
 
 /**
  * @brief StackEmptyException constructor
@@ -28,17 +27,13 @@ StackEmptyException::StackEmptyException(const string& message)
   this->message = message;
 }
 
-
 /**
  * @brief StackEmptyException destructor
  *
  * Destructor for exceptions used for our StackEmptyException
  * class.
  */
-StackEmptyException::~StackEmptyException()
-{
-}
-
+StackEmptyException::~StackEmptyException() {}
 
 /**
  * @brief StackEmptyException message
@@ -54,7 +49,6 @@ const char* StackEmptyException::what() const throw()
   return message.c_str();
 }
 
-
 /**
  * @brief StackMemoryBoundsException constructor
  *
@@ -68,17 +62,13 @@ StackMemoryBoundsException::StackMemoryBoundsException(const string& message)
   this->message = message;
 }
 
-
 /**
  * @brief StackMemoryBoundsException destructor
  *
  * Destructor for exceptions used for our StackMemoryBoundsException
  * class.
  */
-StackMemoryBoundsException::~StackMemoryBoundsException()
-{
-}
-
+StackMemoryBoundsException::~StackMemoryBoundsException() {}
 
 /**
  * @brief StackMemoryBoundsException message
