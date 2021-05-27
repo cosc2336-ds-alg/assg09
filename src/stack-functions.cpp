@@ -1,7 +1,7 @@
 /** @file stack-functions.cpp
  * @brief Stack function declarations for assignment
  *
- * @author Derek Harter
+ * @author Jane Programmer
  * @note   class: COSC 2336, Summer 2021
  * @note   ide  : VSCode Server 3.9.3, Gnu Development Tools
  * @note   assg : Assignment Stacks

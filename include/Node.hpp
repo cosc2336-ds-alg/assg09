@@ -14,7 +14,9 @@
 #ifndef _NODE_HPP_
 #define _NODE_HPP_
 
-/** Node
+/** @class Node
+ * @brief A Node for Linked List implementations
+ *
  * A simple Node structure type to be used to hold values
  * in our linked list implemented of the List ADT.
  */

@@ -18,16 +18,15 @@ using namespace std;
 /** Task 1: Test LStack<int> concrete array implementation of stack of integers
  */
 /*
-   TEST_CASE("LStack<int> test integer stack concrete array implementation",
-          "[task1]")
-   {
-   SECTION("test empty stack is empty")
-   {
+TEST_CASE("LStack<int> test integer stack concrete array implementation", "[task1]")
+{
+  SECTION("test empty stack is empty")
+  {
     // empty stacks should be empty
     LStack<int> empty;
-    CHECK( empty.getSize() == 0 );
-    CHECK( empty.isEmpty() );
-    CHECK( empty.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(empty.getSize() == 0);
+    CHECK(empty.isEmpty());
+    CHECK(empty.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // empty stacks should compare as being equal
     LStack<int> otherEmpty;
@@ -41,121 +40,121 @@ using namespace std;
     // empty stack can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<stack> size: 0 top:[ ]:bottom");
-   }
+  }
 
-   SECTION("test push, pop and top general functionality")
-   {
+  SECTION("test push, pop and top general functionality")
+  {
     // start with emtpy stack
     LStack<int> stack;
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // push an item on empty stack
     stack.push(5);
-    CHECK( stack.getSize() == 1 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 5 );
-    CHECK( stack.str() == "<stack> size: 1 top:[ 5 ]:bottom" );
+    CHECK(stack.getSize() == 1);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 5);
+    CHECK(stack.str() == "<stack> size: 1 top:[ 5 ]:bottom");
 
     // push a second  item on stack
     stack.push(8);
-    CHECK( stack.getSize() == 2 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 8 );
-    CHECK( stack.str() == "<stack> size: 2 top:[ 8, 5 ]:bottom" );
+    CHECK(stack.getSize() == 2);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 8);
+    CHECK(stack.str() == "<stack> size: 2 top:[ 8, 5 ]:bottom");
 
     // push a third item on stack
     stack.push(15);
-    CHECK( stack.getSize() == 3 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 15 );
-    CHECK( stack.str() == "<stack> size: 3 top:[ 15, 8, 5 ]:bottom" );
+    CHECK(stack.getSize() == 3);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 15);
+    CHECK(stack.str() == "<stack> size: 3 top:[ 15, 8, 5 ]:bottom");
 
     // test pop of stack with more than 1 item
     stack.pop();
-    CHECK( stack.getSize() == 2 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 8 );
-    CHECK( stack.str() == "<stack> size: 2 top:[ 8, 5 ]:bottom" );
+    CHECK(stack.getSize() == 2);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 8);
+    CHECK(stack.str() == "<stack> size: 2 top:[ 8, 5 ]:bottom");
 
     // push 2 itmes on
     stack.push(1);
-    CHECK( stack.top() == 1 );
+    CHECK(stack.top() == 1);
     stack.push(3);
-    CHECK( stack.getSize() == 4 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 3 );
-    CHECK( stack.str() == "<stack> size: 4 top:[ 3, 1, 8, 5 ]:bottom" );
+    CHECK(stack.getSize() == 4);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 3);
+    CHECK(stack.str() == "<stack> size: 4 top:[ 3, 1, 8, 5 ]:bottom");
 
     // pop back to 1 item
     stack.pop();
     stack.pop();
     stack.pop();
-    CHECK( stack.getSize() == 1 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == 5 );
-    CHECK( stack.str() == "<stack> size: 1 top:[ 5 ]:bottom" );
+    CHECK(stack.getSize() == 1);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == 5);
+    CHECK(stack.str() == "<stack> size: 1 top:[ 5 ]:bottom");
 
     // make stack empty again
     stack.pop();
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // should complain if we try and pop an empty stack
-    CHECK_THROWS_AS( stack.pop(), StackEmptyException );
+    CHECK_THROWS_AS(stack.pop(), StackEmptyException);
 
     // push on 10 items
     for (int index = 1; index <= 10; index++)
     {
-      stack.push( pow(index, 3) );
+      stack.push(pow(index, 3));
     }
-    CHECK( stack.getSize() == 10 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 10 top:[ 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom" );
+    CHECK(stack.getSize() == 10);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 10 top:[ 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom");
 
     // Array based stack should double in size, only for LStack tests
-    stack.push( pow(11, 3) );
-    CHECK( stack.getSize() == 11 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ 1331, 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom" );
-   }
+    stack.push(pow(11, 3));
+    CHECK(stack.getSize() == 11);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 11 top:[ 1331, 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom");
+  }
 
-   SECTION("test clear of stack")
-   {
+  SECTION("test clear of stack")
+  {
     // create stack of 11 values
     LStack<int> stack;
     for (int index = 1; index <= 11; index++)
     {
-      stack.push( pow(index, 3) );
+      stack.push(pow(index, 3));
     }
-    CHECK( stack.getSize() == 11 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ 1331, 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom" );
+    CHECK(stack.getSize() == 11);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 11 top:[ 1331, 1000, 729, 512, 343, 216, 125, 64, 27, 8, 1 ]:bottom");
 
     // clear the stack
     stack.clear();
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // should be equal to an empty stack
     LStack<int> empty;
-    CHECK( empty == stack );
-    CHECK( stack == empty );
-   }
+    CHECK(empty == stack);
+    CHECK(stack == empty);
+  }
 
-   SECTION("test array based constructor")
-   {
+  SECTION("test array based constructor")
+  {
     int values[] = {1, 3, -2, -4, 7};
     LStack<int> stack(5, values);
 
     // nonempty stack should not be empty
     CHECK(stack.getSize() == 5);
-    CHECK_FALSE(stack.isEmpty() );
+    CHECK_FALSE(stack.isEmpty());
     CHECK(stack.str() == "<stack> size: 5 top:[ 1, 3, -2, -4, 7 ]:bottom");
 
     // test access to front and back
@@ -168,7 +167,7 @@ using namespace std;
     CHECK(stack[3] == -4);
     CHECK(stack[4] == 7);
     CHECK_THROWS_AS(stack[-1], StackMemoryBoundsException);
-    CHECK_THROWS_AS(stack[5],  StackMemoryBoundsException);
+    CHECK_THROWS_AS(stack[5], StackMemoryBoundsException);
     stack[2] = 42;
     CHECK(stack[2] == 42);
     CHECK(stack.str() == "<stack> size: 5 top:[ 1, 3, 42, -4, 7 ]:bottom");
@@ -183,10 +182,10 @@ using namespace std;
     CHECK(stack.getSize() == 7);
     CHECK(stack.top() == 38);
     CHECK(stack.str() == "<stack> size: 7 top:[ 38, 22, 1, 3, 42, -4, 7 ]:bottom");
-   }
+  }
 
-   SECTION("test copy constructor")
-   {
+  SECTION("test copy constructor")
+  {
     int values[] = {3, 1, 4, 2};
     LStack<int> stack(4, values);
     LStack<int> copy = stack;
@@ -210,23 +209,22 @@ using namespace std;
     copy.pop();
     CHECK_FALSE(copy == stack);
     CHECK_FALSE(stack == copy);
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 1: Test LStack<string> concrete array implementation of stack of strings
  */
 /*
-   TEST_CASE("LStack<string> test string stack concrete array implementation",
-          "[task1]")
-   {
-   SECTION("test empty stack is empty")
-   {
+TEST_CASE("LStack<string> test string stack concrete array implementation", "[task1]")
+{
+  SECTION("test empty stack is empty")
+  {
     // empty stacks should be empty
     LStack<string> empty;
-    CHECK( empty.getSize() == 0 );
-    CHECK( empty.isEmpty() );
-    CHECK( empty.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(empty.getSize() == 0);
+    CHECK(empty.isEmpty());
+    CHECK(empty.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // empty stacks should compare as being equal
     LStack<string> otherEmpty;
@@ -240,124 +238,124 @@ using namespace std;
     // empty stack can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<stack> size: 0 top:[ ]:bottom");
-   }
+  }
 
-   SECTION("test push, pop and top general functionality")
-   {
+  SECTION("test push, pop and top general functionality")
+  {
     // start with empty stack
     LStack<string> stack;
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // push an item on empty stack
     stack.push("echo");
-    CHECK( stack.getSize() == 1 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "echo" );
-    CHECK( stack.str() == "<stack> size: 1 top:[ echo ]:bottom" );
+    CHECK(stack.getSize() == 1);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "echo");
+    CHECK(stack.str() == "<stack> size: 1 top:[ echo ]:bottom");
 
     // push a second  item on stack
     stack.push("hotel");
-    CHECK( stack.getSize() == 2 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "hotel" );
-    CHECK( stack.str() == "<stack> size: 2 top:[ hotel, echo ]:bottom" );
+    CHECK(stack.getSize() == 2);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "hotel");
+    CHECK(stack.str() == "<stack> size: 2 top:[ hotel, echo ]:bottom");
 
     // push a third item on stack
     stack.push("oscar");
-    CHECK( stack.getSize() == 3 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "oscar" );
-    CHECK( stack.str() == "<stack> size: 3 top:[ oscar, hotel, echo ]:bottom" );
+    CHECK(stack.getSize() == 3);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "oscar");
+    CHECK(stack.str() == "<stack> size: 3 top:[ oscar, hotel, echo ]:bottom");
 
     // test pop of stack with more than 1 item
     stack.pop();
-    CHECK( stack.getSize() == 2 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "hotel" );
-    CHECK( stack.str() == "<stack> size: 2 top:[ hotel, echo ]:bottom" );
+    CHECK(stack.getSize() == 2);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "hotel");
+    CHECK(stack.str() == "<stack> size: 2 top:[ hotel, echo ]:bottom");
 
     // push 2 itmes on
     stack.push("alpha");
-    CHECK( stack.top() == "alpha" );
+    CHECK(stack.top() == "alpha");
     stack.push("charlie");
-    CHECK( stack.getSize() == 4 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "charlie" );
-    CHECK( stack.str() == "<stack> size: 4 top:[ charlie, alpha, hotel, echo ]:bottom" );
+    CHECK(stack.getSize() == 4);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "charlie");
+    CHECK(stack.str() == "<stack> size: 4 top:[ charlie, alpha, hotel, echo ]:bottom");
 
     // pop back to 1 item
     stack.pop();
     stack.pop();
     stack.pop();
-    CHECK( stack.getSize() == 1 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.top() == "echo" );
-    CHECK( stack.str() == "<stack> size: 1 top:[ echo ]:bottom" );
+    CHECK(stack.getSize() == 1);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.top() == "echo");
+    CHECK(stack.str() == "<stack> size: 1 top:[ echo ]:bottom");
 
     // make stack empty again
     stack.pop();
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // should complain if we try and pop an empty stack
-    CHECK_THROWS_AS( stack.pop(), StackEmptyException );
+    CHECK_THROWS_AS(stack.pop(), StackEmptyException);
 
     // push on 10 items
     for (int index = 1; index <= 10; index++)
     {
-      stack.push( "string-" + to_string( int(pow(index, 3)) ) );
+      stack.push("string-" + to_string(int(pow(index, 3))));
     }
-    CHECK( stack.getSize() == 10 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 10 top:[ string-1000, string-729, string-512, string-343, string-216, string-125, string-64,
-   string-27, string-8, string-1 ]:bottom" );
+    CHECK(stack.getSize() == 10);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 10 top:[ string-1000, string-729, string-512, string-343, string-216, string-125, string-64, "
+                         "string-27, string-8, string-1 ]:bottom");
 
     // Array based stack should double in size, only for LStack tests
-    stack.push( "string-" + to_string( int(pow(11, 3)) ) );
-    CHECK( stack.getSize() == 11 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125,
-   string-64, string-27, string-8, string-1 ]:bottom" );
-   }
+    stack.push("string-" + to_string(int(pow(11, 3))));
+    CHECK(stack.getSize() == 11);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125, "
+                         "string-64, string-27, string-8, string-1 ]:bottom");
+  }
 
-   SECTION("test clear of stack")
-   {
+  SECTION("test clear of stack")
+  {
     // create stack of 11 values
     LStack<string> stack;
     for (int index = 1; index <= 11; index++)
     {
-      stack.push( "string-" + to_string( int(pow(index, 3)) ) );
+      stack.push("string-" + to_string(int(pow(index, 3))));
     }
-    CHECK( stack.getSize() == 11 );
-    CHECK_FALSE( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125,
-   string-64, string-27, string-8, string-1 ]:bottom" );
+    CHECK(stack.getSize() == 11);
+    CHECK_FALSE(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 11 top:[ string-1331, string-1000, string-729, string-512, string-343, string-216, string-125, "
+                         "string-64, string-27, string-8, string-1 ]:bottom");
 
     // clear the stack
     stack.clear();
-    CHECK( stack.getSize() == 0 );
-    CHECK( stack.isEmpty() );
-    CHECK( stack.str() == "<stack> size: 0 top:[ ]:bottom" );
+    CHECK(stack.getSize() == 0);
+    CHECK(stack.isEmpty());
+    CHECK(stack.str() == "<stack> size: 0 top:[ ]:bottom");
 
     // should be equal to an empty stack
     LStack<string> empty;
-    CHECK( empty == stack );
-    CHECK( stack == empty );
-   }
+    CHECK(empty == stack);
+    CHECK(stack == empty);
+  }
 
-   SECTION("test array based constructor")
-   {
+  SECTION("test array based constructor")
+  {
     string values[] = {"alpha", "charlie", "neg-bravo", "neg-delta", "golf"};
     LStack<string> stack(5, values);
 
     // nonempty stack should not be empty
     CHECK(stack.getSize() == 5);
-    CHECK_FALSE(stack.isEmpty() );
+    CHECK_FALSE(stack.isEmpty());
     CHECK(stack.str() == "<stack> size: 5 top:[ alpha, charlie, neg-bravo, neg-delta, golf ]:bottom");
 
     // test access to front and back
@@ -370,7 +368,7 @@ using namespace std;
     CHECK(stack[3] == "neg-delta");
     CHECK(stack[4] == "golf");
     CHECK_THROWS_AS(stack[-1], StackMemoryBoundsException);
-    CHECK_THROWS_AS(stack[5],  StackMemoryBoundsException);
+    CHECK_THROWS_AS(stack[5], StackMemoryBoundsException);
     stack[2] = "life-universe-everything";
     CHECK(stack[2] == "life-universe-everything");
     CHECK(stack.str() == "<stack> size: 5 top:[ alpha, charlie, life-universe-everything, neg-delta, golf ]:bottom");
@@ -385,10 +383,10 @@ using namespace std;
     CHECK(stack.getSize() == 7);
     CHECK(stack.top() == "zulu");
     CHECK(stack.str() == "<stack> size: 7 top:[ zulu, victor, alpha, charlie, life-universe-everything, neg-delta, golf ]:bottom");
-   }
+  }
 
-   SECTION("test copy constructor")
-   {
+  SECTION("test copy constructor")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LStack<string> stack(4, values);
     LStack<string> copy = stack;
@@ -412,6 +410,6 @@ using namespace std;
     copy.pop();
     CHECK_FALSE(copy == stack);
     CHECK_FALSE(stack == copy);
-   }
-   }
- */
+  }
+}
+*/
