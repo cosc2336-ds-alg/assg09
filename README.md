@@ -1,7 +1,7 @@
 ---
 title: 'Assignment Stacks: Applications of Stacks'
 author: 'COSC 2336: Data Structures and Algorithms'
-date: 'Summer 2021'
+date: 'Spring 2024'
 ---
 
 \newcommand{\BigO}[1]{$\mathcal{O}(#1)$}
@@ -81,9 +81,9 @@ using and adding code to for this assignment.
 
 | File Name                                    | Description                                                                                                 |
 |----------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `src/test-stack-functions.cpp`               | Unit tests of the functions using `Stack` data structures you will write for this assignment.               |
-| `src/test-AStack.cpp`                        | Unit tests of the array based `AStack` implementation of the `Stack` API                                    |
-| `src/test-LStack.cpp`                        | Unit tests of the link list based `LStack` implementation of the `Stack` API                                |
+| `src/assg09-stack-functions-tests.cpp`       | Unit tests of the functions using `Stack` data structures you will write for this assignment.               |
+| `src/assg09-AStack-tests.cpp`                | Unit tests of the array based `AStack` implementation of the `Stack` API                                    |
+| `src/assg09-LStack-tests.cpp`                | Unit tests of the link list based `LStack` implementation of the `Stack` API                                |
 | `include/stack-functions.hpp`                | Header file for the functions you will write that use stack for various applications.                       |
 | `include/Stack.hpp`                          | Header file of the ADT base `Stack` class that defines the `Stack` interface / abstraction                  |
 | `include/AStack.hpp`                         | Header file of the concrete array based implementation of the `Stack` abstract data type                    |
@@ -113,12 +113,12 @@ you have completed the following setup steps.
    assignment invitation link for 'Assignment Recursion' for our
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
-   development environment.
-3. Configure the project by running the `configure` script from a terminal.
-4. Confirm that the project builds and runs, though no tests will be
+   development environment. Make sure to open the cloned
+   folder and restart inside of the correct Dev Container.
+3. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
-5. You should create the issue for Task 1 and/or for all tasks for the assignment
+4. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
    and create it/them from the issue templates for the assignment. Also make
    sure that you link each issue you create with the `Feedback` pull
