@@ -20,7 +20,7 @@ date: 'Spring 2024'
 In this assignment, you will be using the `Stack` abstract data type
 we developed for this unit and discussed in our lectures, to implement
 4 functions that use a stack data type to accomplish their algorithms.
-The functions range from relatively simple, straight forward use of a
+The functions range from relatively simple straight forward use of a
 stack, to a bit more complex.  But in all 4 cases, you should only
 need to use the abstract stack interface functions `push()`, `pop()`,
 `top()`, and `isEmpty()` in order to successfully use our `Stack` type
@@ -35,31 +35,28 @@ a `Stack` ADT
 [Shaffer 3.2 C++ edition, pg. 121](https://people.cs.vt.edu/shaffer/Book/C++3elatest.pdf). 
 The `Stack` ADT we give and complete in this assignment
 is similar in structure to the `List` ADT from the previous
-assignment.  And array based (`AStack`) and linked list based
+assignment.  An array based (`AStack`) and linked list based
 (`LStack`) implementations of the `Stack` abstraction are again
 given and used for this assignment.
 
-Recall from our materials this unit that a stack is a 
+Recall from our materials for this unit that a stack is a
 first-in-first-out (FIFO) data structure.  You should be able to
-understand the the performance trade offs a bit now of using
-an array to implement the stack, or of using a linked list.
-For example, since we push values only on 1 end, if we
-are using an array, we don't want to be using index 0 of the
-array to insert new values on the stack for the `push()`
-and `pop()` operations.  If we did that, we would have to always shift
-items up and down whenever we pushed and popped items to/from
-the stack, meaning both operations would be
-\BigO{n}.  Instead we should be using the end of the array
-to push on items and pop them off from the stack.  As long as
-we haven't filled up the capacity of our array memory, the
-operations are then constant time \BigO{1} operations, as
-long as we don't have to grow the size of the static array.  In which
-case, when that happens, the push operation does become 
-\BigO{n} since we have to copy all values from the old
-memory to the new memory.  However, the pop operation would always
-be constant time if we are pushing and popping from the end of the array.
+understand the performance trade offs a bit now of using an array to
+implement the stack, or of using a linked list.  For example, since we
+push values only on 1 end, if we are using an array, we don't want to
+be using index 0 of the array to insert new values on the stack for
+the `push()` and `pop()` operations.  If we did that, we would have to
+always shift items up and down whenever we pushed and popped items
+to/from the stack, meaning both operations would be \BigO{n}.  Instead
+we should be using the end of the array to push on items and pop them
+off from the stack.  The operations are then constant time \BigO{1}
+operations, as long as we don't have to grow the size of the static
+array.  In which case, when that happens, the push operation does
+become \BigO{n} since we have to copy all values from the old memory
+to the new memory.  However, the pop operation would always be
+constant time if we are pushing and popping from the end of the array.
 
-However, for a singly linked list, we could use either end for the
+For a singly linked list, we could use either end for the
 `push()` operation and it would be constant time, as long as we keep
 pointers both to the `front` and `back` like we did with our
 `List` in a previous assignment.  However, if the list is singly
@@ -114,10 +111,11 @@ you have completed the following setup steps.
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
    development environment. Make sure to open the cloned
-   folder and restart inside of the correct Dev Container.
-3. Confirm that the project builds and runs, though no tests will be
-   defined or run initially.  If the project does not build on the first
-   checkout, please inform the instructor.
+   folder and restart inside of the Dev Container.
+3. Confirm that the project builds and runs, for this assignment a few
+   tests will be enabled and running on the initial clone of the
+   project.  If the project does not build on the first checkout,
+   please inform the instructor.
 4. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
    and create it/them from the issue templates for the assignment. Also make
