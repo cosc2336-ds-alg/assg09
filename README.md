@@ -65,10 +65,10 @@ end of the linked list.  This is because, if you want to remove
 the last node of a singly linked list, you need a pointer to the
 node before the last one so you can make it the new `back` node
 after removal.  This requires a search through the list, and thus
-`pop()` becomes \BigO{n} if we use the back of the list.
+`pop()` becomes $\mathcal{O}(n)$ if we use the back of the list.
 So for a linked list, we want to push and pop from the front of
 the list, because both operations can be done in 
-\BigO{1} constant time in that case.
+$\mathcal{O}(1)$ constant time in that case.
 
 
 # Overview and Setup
