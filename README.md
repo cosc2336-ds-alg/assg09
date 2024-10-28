@@ -4,7 +4,7 @@ author: 'COSC 2336: Data Structures and Algorithms'
 date: 'Spring 2024'
 ---
 
-\newcommand{\BigO}[1]{$\mathcal{O}(#1)$}
+<!-- \newcommand{\BigO}[1]{$\mathcal{O}(#1)$} -->
 
 # Objectives
 - Implement Stack API functions.
@@ -47,12 +47,12 @@ push values only on 1 end, if we are using an array, we don't want to
 be using index 0 of the array to insert new values on the stack for
 the `push()` and `pop()` operations.  If we did that, we would have to
 always shift items up and down whenever we pushed and popped items
-to/from the stack, meaning both operations would be \BigO{n}.  Instead
+to/from the stack, meaning both operations would be $\mathcal{O}(n)$.  Instead
 we should be using the end of the array to push on items and pop them
-off from the stack.  The operations are then constant time \BigO{1}
+off from the stack.  The operations are then constant time $\mathcal{O}(1)$
 operations, as long as we don't have to grow the size of the static
 array.  In which case, when that happens, the push operation does
-become \BigO{n} since we have to copy all values from the old memory
+become $\mathcal{O}(n)$ since we have to copy all values from the old memory
 to the new memory.  However, the pop operation would always be
 constant time if we are pushing and popping from the end of the array.
 
